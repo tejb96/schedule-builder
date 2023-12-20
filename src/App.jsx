@@ -2,8 +2,7 @@
 import './App.css';
 import Banner from './components/Banner';
 import CourseList from './components/CourseList';
-
-
+import { Paper, Typography } from '@mui/material';
 
 const schedule = {
     title: "CS Courses for 2024-2025",
@@ -38,8 +37,10 @@ const schedule = {
 const App = () => (
     <div className="App">
       <header className="App-header">
+          <Paper elevation={3} style={{ padding: 20, marginBottom: 20 }}>
           <Banner title={schedule.title} />
           <CourseList courses={schedule.courses} />
+          </Paper>
       </header>
     </div>
 );
