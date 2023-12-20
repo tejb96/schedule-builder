@@ -1,13 +1,9 @@
-
 const CourseList = ({ courses }) => (
     <div>
-        <ul>
-            {Object.entries(courses).map(([courseCode, course]) => (
-                <li key={courseCode}>
-                    {course.title} - {course.meets}
-                </li>
-            ))}
-        </ul>
+        {Object.entries(courses).map(([courseCode, course]) => (
+            <h6 key={courseCode}>
+                {course.term} {"CS"} {course.number+": "} {course.title}</h6>
+        ))}
     </div>
 );
 

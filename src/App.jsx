@@ -3,6 +3,8 @@ import './App.css';
 import Banner from './components/Banner';
 import CourseList from './components/CourseList';
 
+
+
 const schedule = {
     title: "CS Courses for 2024-2025",
     "courses": {
