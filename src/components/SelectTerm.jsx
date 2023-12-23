@@ -1,24 +1,28 @@
 // SelectTerm.jsx
 
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import {Checkbox, ListItemText, MenuItem, Select} from "@mui/material";
 
-const Terms = ['Fall', 'Spring', 'Winter'];
-
-const SelectTerm = () => {
-    const [selectedTerm, setSelectedTerm] = useState(0);
-
-    const nextTerm = () => {
-        const newTerm = (selectedTerm + 1) % Terms.length;
-        setSelectedTerm(newTerm);
-    };
+const SelectTerm = ({onSelectTerm,selectedTerm, terms}) => {
 
     return (
-        <div>
-            <Button variant="contained" color="primary" onClick={nextTerm}>
-                {Terms[selectedTerm]}
-            </Button>
-        </div>
+        <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={selectedTerm}
+            onChange={(e)=>onSelectTerm(e.target.value)}
+            // input={<OutlinedInput label="Tag" />}
+            renderValue={(selected) => selected.join(', ')}
+            // MenuProps={MenuProps}
+        >
+            {terms.map((term) => (
+                <MenuItem key={term} value={term}>
+                    <Checkbox checked={selectedTerm.indexOf(term) > -1} />
+                    <ListItemText primary={term} />
+                </MenuItem>
+            ))}
+        </Select>
+
     );
 };
 

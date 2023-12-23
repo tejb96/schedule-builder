@@ -3,14 +3,11 @@ import SelectTerm from './SelectTerm';
 import { Box, Typography } from '@mui/material';
 
 const CourseList = ({ courses }) => {
-    const [selectedTerm, setSelectedTerm] = useState('Fall');
-
-    const handleSelectTerm = (newTerm) => {
-        setSelectedTerm(newTerm);
-    };
+    const terms = ['Fall', 'Spring', 'Winter'];
+    const [selectedTerm, setSelectedTerm] = useState(terms);
 
     const filteredCourses = Object.keys(courses)
-        .filter((courseKey) => courses[courseKey].term.includes(selectedTerm))
+        .filter((courseKey) => selectedTerm.includes(courses[courseKey].term))
         .map((courseKey) => (
             <Box
                 key={courseKey}
@@ -31,7 +28,7 @@ const CourseList = ({ courses }) => {
 
     return (
         <div>
-            <SelectTerm onSelectTerm={handleSelectTerm} selectedTerm={selectedTerm} />
+            <SelectTerm onSelectTerm={setSelectedTerm} selectedTerm={selectedTerm} terms={terms} />
             <Box
                 sx={{
                     display: 'flex',
