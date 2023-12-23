@@ -6,6 +6,7 @@ import { Paper } from '@mui/material';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import useCourses from './utilities/useCourses';
 
+
 const queryClient = new QueryClient();
 const App = () => {
     const { data, isLoading, isError } = useCourses();
@@ -22,8 +23,8 @@ const App = () => {
         <div className="App">
             <header className="App-header">
                 <Paper>
-                <Banner title={data.title} />
-                <CourseList courses={data.courses} />
+                    <Banner title={data.title} />
+                    <CourseList courses={data.courses} />
                 </Paper>
             </header>
         </div>
